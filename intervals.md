@@ -29,3 +29,31 @@ https://leetcode.com/problems/merge-intervals/
 ## insert interval
 
 https://leetcode.com/problems/insert-interval/
+```python
+def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
+    if not intervals:
+        return [newInterval]
+    start = newInterval[0]
+    end = newInterval[1]
+    left = 0
+    right = len(intervals) - 1
+    if intervals[right][1] < start:
+        intervals.append(newInterval)
+        return intervals
+    while left <= right:
+        mid = left + (right - left) // 2
+        if intervals[mid][1] < start:
+            left = mid + 1
+        elif intervals[mid][0] > end:
+            right = mid - 1
+        elif intervals[left][1] < start:
+            left += 1
+        elif intervals[right][0] > end:
+            right -= 1
+        else:
+            start = min(start, intervals[left][0])
+            end = max(end, intervals[right][1])
+            break
+    return intervals[:left] + [[start, end]] + intervals[right+1:]
+
+```
