@@ -26,6 +26,23 @@ def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
 
 https://leetcode.com/problems/merge-intervals/
 
+```python
+def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+    intervals.sort()
+    int_current = 0
+    lenght_int = len(intervals)
+    results = []
+    while(int_current < lenght_int):
+        start = intervals[int_current][0]
+        end = intervals[int_current][1]
+        while(int_current < lenght_int-1 and intervals[int_current+1][0] <= end):
+            end = max(end, intervals[int_current+1][1])
+            int_current += 1
+        results.append([start, end])
+        int_current += 1
+        return results
+
+
 ## insert interval
 
 https://leetcode.com/problems/insert-interval/
