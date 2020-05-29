@@ -42,7 +42,7 @@ def merge(self, intervals: List[List[int]]) -> List[List[int]]:
         int_current += 1
         return results
 
-
+```
 ## insert interval
 
 https://leetcode.com/problems/insert-interval/
