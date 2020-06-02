@@ -12,37 +12,77 @@
 
 
 ## Reverse Linked List
-
 https://leetcode.com/problems/reverse-linked-list/
 
-##Middle of the Linked List
-
+## Middle of the Linked List
 https://leetcode.com/problems/middle-of-the-linked-list/
 
-##Palindrome Linked List
-
+## Palindrome Linked List
 https://leetcode.com/problems/palindrome-linked-list/
 
-##Merge Two Sorted Lists
-
+## Merge Two Sorted Lists
 https://leetcode.com/problems/merge-two-sorted-lists/
+```python
+#очевидное неэффективное 1 решение
+def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
+    #Инициализация
+    f = False 
+    #Флаг сколько раз выполнялся append
+    #внутренняя функция добавления элемента к списку
+    l = None
+    t = None
+    #переписываю алгоритм со слайдов
+        #основной цикл
+    while l1 and l2:
+        if l1.val < l2.val:
+            d = l1.val
+            l1 = l1.next
+        else:
+            d = l2.val
+            l2 = l2.next
+        if f:
+            t.next = ListNode(d)
+            t = t.next
+        else:
+            f = True
+            l = ListNode(d)
+            t = l
+        #хвост
+    while l1:
+        if f:
+            t.next = ListNode(l1.val)
+            t = t.next
+        else:
+            f = True
+            l = ListNode(l1.val)
+            t = l
+        l1 = l1.next
+    while l2:
+        if f:
+            t.next = ListNode(l2.val)
+            t = t.next
+        else:
+            f = True
+            l = ListNode(l2.val)
+            t = l
+        l2 = l2.next
+    return l
+```
 
-##Remove Nth Node From End of List
-
+## Remove Nth Node From End of List
 https://leetcode.com/problems/remove-nth-node-from-end-of-list/
 
-##Linked List Cycle II
-
+## Linked List Cycle II
 https://leetcode.com/problems/linked-list-cycle-ii/
 
-##Linked List Cycle
+## Linked List Cycle
 https://leetcode.com/problems/linked-list-cycle/
 
-##Reorder List
+## Reorder List
 https://leetcode.com/problems/reorder-list/
 
-##Intersection of Two Linked Lists
+## Intersection of Two Linked Lists
 https://leetcode.com/problems/intersection-of-two-linked-lists/
 
-##Sort List
+## Sort List
 https://leetcode.com/problems/sort-list/
