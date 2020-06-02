@@ -18,6 +18,15 @@ https://leetcode.com/problems/reverse-linked-list/
 ## Middle of the Linked List
 
 https://leetcode.com/problems/middle-of-the-linked-list/
+```python
+def middleNode(self, head: ListNode) -> ListNode:
+    nodes = []
+    while head:
+        nodes.append(head)
+        head = head.next
+    return nodes[int(len(nodes) / 2)]
+
+```
 
 ## Palindrome Linked List
 
