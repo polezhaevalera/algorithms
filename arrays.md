@@ -8,12 +8,18 @@
 https://leetcode.com/problems/two-sum/
 
 ```python
-def twoSum(self, nums, target):
-    index_dict = {}
-    for i in range(len(nums)):
-        if nums[i] in index_dict:
-            return [index_dict[nums[i]], i]
-        index_dict[target - nums[i]] = i
+def twoSum(self, nums: List[int], target: int) -> List[int]:
+    nums = [elem for elem in enumerate(nums)]
+    nums.sort(key=lambda x: x[1])
+    first = 0
+    last = len(nums) - 1
+    while first != last:
+        if nums[first][1] + nums[last][1] == target:
+            return [nums[first][0], nums[last][0]]
+        elif nums[first][1] + nums[last][1] < target:
+            first = first + 1
+        else:
+            last = last - 1
 
 ```
 
