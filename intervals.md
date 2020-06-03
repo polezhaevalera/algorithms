@@ -33,6 +33,9 @@ https://leetcode.com/problems/insert-interval/
 
 def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
     res = []
+    #x = []
+    #intervals = enumerate(intervals)
+    #intervals = sorted(intervals, key=lambda x: x[1])
     for interval in intervals:
         if interval[1] < newInterval[0]:
             res.append(interval)
