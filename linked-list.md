@@ -22,6 +22,7 @@ https://leetcode.com/problems/palindrome-linked-list/
 
 ## Merge Two Sorted Lists
 https://leetcode.com/problems/merge-two-sorted-lists/
+
 ```python
 #очевидное неэффективное 1 решение
 def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
@@ -67,6 +68,28 @@ def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
             t = l
         l2 = l2.next
     return l
+```
+```python
+
+```python
+#то же решение, но выглядит приличнее
+def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
+    L_Final = ListNode()
+    cur = L_Final
+    while l1 and l2:
+        if l1.val < l2.val:
+            cur.next = ListNode(l1.val)
+            l1 = l1.next
+        else:
+            cur.next = ListNode(l2.val)
+            l2 = l2.next
+        cur = cur.next
+    if l1:
+        cur.next = l1
+    if l2:
+        cur.next = l2
+    return L_Final.next
+
 ```
 
 ## Remove Nth Node From End of List
