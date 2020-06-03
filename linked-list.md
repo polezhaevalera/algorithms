@@ -24,50 +24,24 @@ https://leetcode.com/problems/palindrome-linked-list/
 https://leetcode.com/problems/merge-two-sorted-lists/
 
 ```python
-#очевидное неэффективное 1 решение
+#то же решение, но выглядит приличнее
 def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
-    #Инициализация
-    f = False 
-    #Флаг сколько раз выполнялся append
-    #внутренняя функция добавления элемента к списку
-    l = None
-    t = None
-    #переписываю алгоритм со слайдов
-        #основной цикл
+    L_Final = ListNode()
+    cur = L_Final
     while l1 and l2:
         if l1.val < l2.val:
-            d = l1.val
+            cur.next = ListNode(l1.val)
             l1 = l1.next
         else:
-            d = l2.val
+            cur.next = ListNode(l2.val)
             l2 = l2.next
-        if f:
-            t.next = ListNode(d)
-            t = t.next
-        else:
-            f = True
-            l = ListNode(d)
-            t = l
-        #хвост
-    while l1:
-        if f:
-            t.next = ListNode(l1.val)
-            t = t.next
-        else:
-            f = True
-            l = ListNode(l1.val)
-            t = l
-        l1 = l1.next
-    while l2:
-        if f:
-            t.next = ListNode(l2.val)
-            t = t.next
-        else:
-            f = True
-            l = ListNode(l2.val)
-            t = l
-        l2 = l2.next
-    return l
+        cur = cur.next
+    if l1:
+        cur.next = l1
+    if l2:
+        cur.next = l2
+    return L_Final.next
+
 ```
 
 
