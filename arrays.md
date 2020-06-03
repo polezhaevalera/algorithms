@@ -7,25 +7,36 @@
 
 https://leetcode.com/problems/two-sum/
 
-```python
-def twoSum(self, nums: List[int], target: int) -> List[int]:
-    nums = [elem for elem in enumerate(nums)]
-    nums.sort(key=lambda x: x[1])
-    first = 0
-    last = len(nums) - 1
-    while first != last:
-        if nums[first][1] + nums[last][1] == target:
-            return [nums[first][0], nums[last][0]]
-        elif nums[first][1] + nums[last][1] < target:
-            first = first + 1
-        else:
-            last = last - 1
-
-```
-
 ## 3sum
 
 https://leetcode.com/problems/3sum/
+
+```python
+def threeSum(self, nums: List[int]) -> List[List[int]]:
+    nums.sort()
+    result = []
+    for first in range(len(nums)-2):
+        if first > 0 and nums[first] == nums[first-1]:
+            continue
+        second = first+1
+        third = len(nums) - 1
+        while second < third:
+            sum = nums[first] + nums[second] + nums[third]
+            if sum < 0:
+                second = second + 1
+            elif sum > 0:
+                third = third - 1
+            else:
+                result.append([nums[first], nums[second], nums[third]])
+                while second < third and nums[second] == nums[second+1]:
+                    second = second + 1
+                while third > second and nums[third] == nums[third-1]:
+                    third = third - 1
+                second = second + 1
+                third = third - 1
+    return result
+ ```
+    
 
 ## Subarray sum equals k
 
