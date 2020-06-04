@@ -30,3 +30,16 @@ https://leetcode.com/problems/3sum/
 ## Subarray sum equals k
 
 https://leetcode.com/problems/subarray-sum-equals-k/
+
+```python
+def subarraySum(self, nums, k):
+    count = 0
+    sums = 0
+    d = dict()
+    d[0] = 1
+    for i in range(len(nums)):
+        sums += nums[i]
+        count += d.get(sums - k, 0)
+        d[sums] = d.get(sums, 0)+1
+    return(count)
+```
