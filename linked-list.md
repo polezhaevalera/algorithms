@@ -76,6 +76,17 @@ def detectCycle(self, head: ListNode) -> ListNode:
 
 ## Linked List Cycle
 https://leetcode.com/problems/linked-list-cycle/
+```python
+def hasCycle(self, head: ListNode) -> bool:
+    l = {}
+    while head:
+        if(head in l):
+            return True
+        else:
+            l[head] = True
+        head = head.next
+    return False
+```
 
 ## Reorder List
 https://leetcode.com/problems/reorder-list/
