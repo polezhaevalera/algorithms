@@ -90,7 +90,35 @@ def hasCycle(self, head: ListNode) -> bool:
 
 ## Reorder List
 https://leetcode.com/problems/reorder-list/
+```python 
+def reorderList(self, head: ListNode) -> None:
+    if not head or not head.next:
+        return head
+    stack = []
+    slo = head
+    fst = head
+    prev = slo
+    while fst and fst.next:
+        prev = slo
+        slo = slo.next
+        fst = fst.next.next
+    prev.next = None
+    while slo:
+        stack.append(slo)
+        slo = slo.next
+    temp = head
+    temp2 = head.next
+    while temp2:
+        temp.next = stack.pop()
+        temp.next.next = temp2
+        temp = temp2
+        temp2 = temp2.next
+    while stack:
+        temp.next = stack.pop()
+        temp = temp.next
+    temp.next = None
 
+```
 ## Intersection of Two Linked Lists
 https://leetcode.com/problems/intersection-of-two-linked-lists/
 
