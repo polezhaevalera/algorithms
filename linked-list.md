@@ -138,3 +138,36 @@ def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
 ```
 ## Sort List
 https://leetcode.com/problems/sort-list/
+```python
+def merge(self, left: ListNode, right: ListNode) -> ListNode:
+    head = ListNode(0)
+    current = head
+    while left and right:
+        if left.val <= right.val:
+            current.next = left
+            left = left.next
+        else:
+            current.next = right
+            right = right.next
+        current = current.next
+    if not left:
+        current.next = right
+    elif not right:
+        current.next = left
+    return head.next
+
+
+def sortList(self, head: ListNode) -> ListNode:
+    if not head or not head.next:
+        return head
+    mid = head
+    temp = head
+    while mid.next and temp.next and temp.next.next:
+        mid = mid.next
+        temp = temp.next.next
+    right = self.sortList(mid.next)
+    mid.next = None
+    left = self.sortList(head)
+    return self.merge(left, right)
+
+```
