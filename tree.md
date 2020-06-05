@@ -35,8 +35,23 @@ def inorderTraversal(self, root: TreeNode) -> List[int]:
 ## Symmetric Tree
 
 https://leetcode.com/problems/symmetric-tree/
+```python 
+def isValidBST(self, root: TreeNode) -> bool:
+    if not root:
+        return True
+    stack = [(root, float('-inf'), float('inf'))]
+    while stack:
+        root, lower, upper = stack.pop()
+        if not root:
+            continue
+        value = root.val
+        if value <= lower or value >= upper:
+            return False
+        stack.append((root.right, value, upper))
+        stack.append((root.left, lower, value))
+    return True
 
-
+```
 
 ## Maximum Depth Of Binary Tree
 
