@@ -121,6 +121,20 @@ def reorderList(self, head: ListNode) -> None:
 ```
 ## Intersection of Two Linked Lists
 https://leetcode.com/problems/intersection-of-two-linked-lists/
+```python
+def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
+    temp1 = headA
+    temp2 = headB
+    d = {}
+    while temp1:
+        d[temp1] = temp1
+        temp1 = temp1.next
+    while temp2:
+        if temp2 in d:
+            return temp2
+        temp2 = temp2.next
+    return None
 
+```
 ## Sort List
 https://leetcode.com/problems/sort-list/
