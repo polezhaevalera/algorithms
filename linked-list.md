@@ -14,6 +14,17 @@
 ## Reverse Linked List
 
 https://leetcode.com/problems/reverse-linked-list/
+```python
+def reverseList(self, head: ListNode) -> ListNode:
+    prev = None
+    current = head
+    while current:
+        current.next = prev
+        prev = current
+        current = current.next
+    return prev
+
+```
 
 ## Middle of the Linked List
 
